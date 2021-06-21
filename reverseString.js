@@ -1,6 +1,7 @@
 const reverse = (input) => {
   const words = [];
   const otherChars = [];
+  const polishChars = "ĄĆĘŁŃÓŚŹŻąćęłńóśźż".split('');
 
   let output = "";
   let wordCount = 0;
@@ -9,7 +10,7 @@ const reverse = (input) => {
   for (let i = 0; i < s.length; i++) {
     let c = s[i];
   
-    if ((c.charCodeAt(0) > 64 && c.charCodeAt(0) < 91) || (c.charCodeAt(0) > 96 && c.charCodeAt(0) < 123)) {
+    if ((c.charCodeAt(0) > 64 && c.charCodeAt(0) < 91) || (c.charCodeAt(0) > 96 && c.charCodeAt(0) < 123) || polishChars.includes(c)) {
       if (words[wordCount] != null)
         words[wordCount].push(c);
       else {
@@ -47,7 +48,7 @@ const reverse = (input) => {
   return output;
 }
 
-const s = "AAaa Zzz?    qwer   ;;;";
+const s = "Jedenaście,.;  dwa trzy;;-= cztery -=- pięć";
 console.log(`input: ${s}`);
 console.log(`output: ${reverse(s)}`);
 
